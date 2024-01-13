@@ -36,10 +36,10 @@ public class ComplementHandler {
         char[][] nucleotideComplementArray = new char[complementaryDNAArray.length][2];
 
         // decide rather to use RNA or DNA complements based on RadioButtons
-        if (isSequenceTypeDNA()) {
+        if (isSequenceTypeDNA) {
             nucleotideComplementArray = complementaryDNAArray;
         }
-        else if (isSequenceTypeRNA()) {
+        else if (isSequenceTypeRNA) {
             nucleotideComplementArray = complementaryRNAArray;
         }
 
