@@ -1,6 +1,6 @@
-package DNAComplement.DNAFrames;
+package DNAFrames;
 
-import DNAComplement.DNAListeners.ButtonListener;
+import DNAListeners.ButtonListener;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,6 +1,6 @@
-package DNAComplement.DNAFrames;
+package DNAFrames;
 
-import DNAComplement.DNASequences;
+import DNAObjects.DNASequences;
 
 import javax.swing.*;
 import java.awt.*;

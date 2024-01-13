@@ -1,7 +1,7 @@
-package DNAComplement.DNAListeners;
+package DNAListeners;
 
-import DNAComplement.DNAFrames.DNAMainFrame;
-import DNAComplement.DNAHandlers.ImportHandler;
+import DNAFrames.DNAMainFrame;
+import DNAHandlers.ImportHandler;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

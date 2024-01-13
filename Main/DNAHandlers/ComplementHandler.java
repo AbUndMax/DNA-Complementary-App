@@ -1,4 +1,4 @@
-package DNAComplement.DNAHandlers;
+package DNAHandlers;
 
 public class ComplementHandler {
 

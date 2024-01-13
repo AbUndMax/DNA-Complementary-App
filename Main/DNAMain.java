@@ -1,8 +1,6 @@
-package DNAComplement;
+import DNAFrames.DNAMainFrame;
 
-import DNAComplement.DNAFrames.DNAMainFrame;
-
-public class DNA_Main {
+public class DNAMain {
 
     public static void main(String[] args) {
         DNAMainFrame mf = new DNAMainFrame();

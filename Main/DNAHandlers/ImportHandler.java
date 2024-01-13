@@ -1,8 +1,8 @@
-package DNAComplement.DNAHandlers;
+package DNAHandlers;
 
-import DNAComplement.DNAFrames.DNAMainFrame;
-import DNAComplement.DNAFrames.ImportSuccessDialog;
-import DNAComplement.DNASequences;
+import DNAFrames.DNAMainFrame;
+import DNAFrames.ImportSuccessDialog;
+import DNAObjects.DNASequences;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -57,7 +57,7 @@ public class ImportHandler {
 
                 // check if it is a valid FASTA header
                 if (line.charAt(0) != '>') {
-                        throw new FileFormatError();
+                    throw new FileFormatError();
                 }
 
                 // initialize new sequence object with just its header.

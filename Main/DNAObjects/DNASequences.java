@@ -1,4 +1,4 @@
-package DNAComplement;
+package DNAObjects;
 
 import java.util.HashMap;
 
