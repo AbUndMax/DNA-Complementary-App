@@ -1,16 +1,16 @@
 package DNAListeners;
 
-import DNAFrames.DNAMainFrame;
+import DNAWindows.DNAMainFrame;
 import DNAHandlers.ImportHandler;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ButtonListener implements ActionListener {
+public class MainFrameButtonListener implements ActionListener {
 
     private DNAMainFrame frame;
 
-    public ButtonListener(DNAMainFrame frame) {
+    public MainFrameButtonListener(DNAMainFrame frame) {
         this.frame  = frame;
     }
 
@@ -21,14 +21,6 @@ public class ButtonListener implements ActionListener {
         switch(command) {
             case "import":
                 ImportHandler.handleImport(frame);
-                break;
-
-            case "reverseC":
-
-                break;
-
-            case "complement":
-
                 break;
 
             case "copy":

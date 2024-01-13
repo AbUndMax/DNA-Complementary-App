@@ -5,8 +5,9 @@ import java.util.HashMap;
 public class DNASequences {
 
     private String header;
-
     private String sequence;
+    private String complement;
+    private String reverseComplement;
 
     public static HashMap<String, DNASequences> allSequences = new HashMap<>();
 
@@ -38,5 +39,21 @@ public class DNASequences {
 
     public void setSequence(String sequence) {
         this.sequence = sequence;
+    }
+
+    public String getComplement() {
+        return complement;
+    }
+
+    public void setComplement(String complement) {
+        this.complement = complement;
+    }
+
+    public String getReverseComplement() {
+        return reverseComplement;
+    }
+
+    public void setReverseComplement(String reverseComplement) {
+        this.reverseComplement = reverseComplement;
     }
 }

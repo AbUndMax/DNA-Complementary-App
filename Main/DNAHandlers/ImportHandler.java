@@ -1,7 +1,7 @@
 package DNAHandlers;
 
-import DNAFrames.DNAMainFrame;
-import DNAFrames.ImportSuccessDialog;
+import DNAWindows.DNAMainFrame;
+import DNAWindows.ImportSuccessDialog;
 import DNAObjects.DNASequences;
 
 import javax.swing.*;
