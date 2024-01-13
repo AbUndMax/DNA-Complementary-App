@@ -15,7 +15,6 @@ public class ComplementHandler {
 
     public static void getComplements(Boolean isReverse) {
 
-        int i = 0;
         for (String sequenceName : selectedItems) {
             DNASequences currentSequence = allSequences.get(sequenceName);
 
