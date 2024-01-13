@@ -1,6 +1,7 @@
 package DNAObjects;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class DNASequences {
 
@@ -55,5 +56,9 @@ public class DNASequences {
 
     public void setReverseComplement(String reverseComplement) {
         this.reverseComplement = reverseComplement;
+    }
+
+    public static Set<String> getAllSequenceNames() {
+        return allSequences.keySet();
     }
 }

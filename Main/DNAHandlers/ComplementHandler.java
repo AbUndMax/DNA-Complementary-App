@@ -2,7 +2,7 @@ package DNAHandlers;
 
 import DNAObjects.DNASequences;
 
-import static DNAListeners.ComboBoxListener.selectedItems;
+import static DNAListeners.ImportComboBoxListener.selectedItems;
 import static DNAListeners.RadioListener.isSequenceTypeDNA;
 import static DNAListeners.RadioListener.isSequenceTypeRNA;
 import static DNAObjects.DNASequences.allSequences;

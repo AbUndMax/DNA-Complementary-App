@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import static DNAObjects.DNASequences.allSequences;
 import static DNAWindows.ImportSuccessDialog.comboBox;
 
-public class ComboBoxListener implements ActionListener {
+public class ImportComboBoxListener implements ActionListener {
 
     public static String[] selectedItems = allSequences.keySet().toArray(new String[0]);
 

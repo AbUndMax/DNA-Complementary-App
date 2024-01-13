@@ -11,18 +11,15 @@ public class DNAMainFrame extends JFrame {
     private MainFrameButtonListener buttonListener = new MainFrameButtonListener(this);
     private RadioListener radioListener = new RadioListener();
 
-    private BoxLayout boxL = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS);
+    private BoxLayout boxLayout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS);
 
     public static final JRadioButton dna = new JRadioButton("DNA");
     public static final JRadioButton rna = new JRadioButton("RNA");
 
-    private static final JPanel importSuccessButtonPane = new JPanel();
-    private static final JPanel resultPane = new JPanel();
-    private static final JPanel resultButtonsPane = new JPanel();
 
     public DNAMainFrame() {
         setTitle("DNA-Complement-Generator");
-        setLayout(boxL);
+        setLayout(boxLayout);
         setSize(500, 300);
         setMinimumSize(new Dimension(300, 150));
         setLocationRelativeTo(null);

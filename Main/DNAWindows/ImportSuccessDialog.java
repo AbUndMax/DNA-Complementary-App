@@ -1,26 +1,22 @@
 package DNAWindows;
 
-import DNAListeners.ComboBoxListener;
+import DNAListeners.ImportComboBoxListener;
 import DNAListeners.ImportDialogButtonListener;
-import DNAListeners.MainFrameButtonListener;
-import DNAObjects.DNASequences;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Set;
+
+import static DNAObjects.DNASequences.getAllSequenceNames;
 
 public class ImportSuccessDialog extends JDialog {
 
     private ImportDialogButtonListener buttonListener = new ImportDialogButtonListener();
-    private ComboBoxListener comboBoxListener = new ComboBoxListener();
+    private ImportComboBoxListener comboBoxListener = new ImportComboBoxListener();
     public static JComboBox<String> comboBox = new JComboBox<>();
 
     private BoxLayout boxYLayout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS);
     private static final JLabel successConfirmation = new JLabel();
     private static final JLabel information = new JLabel();
-
-    private Set<String> sequenceNames = DNASequences.allSequences.keySet();
-
 
 
     public ImportSuccessDialog(Frame owner) {
@@ -55,7 +51,7 @@ public class ImportSuccessDialog extends JDialog {
 
         // add comboBox Items
         comboBox.addItem("All");
-        for (String name : sequenceNames) {
+        for (String name : getAllSequenceNames()) {
             comboBox.addItem(name);
         }
 
@@ -78,8 +74,9 @@ public class ImportSuccessDialog extends JDialog {
     }
 
     private JPanel drawComplementButtons() {
-        JPanel ButtonPane = new JPanel();
-        BoxLayout buttPaneBoxLayout = new BoxLayout(ButtonPane, BoxLayout.X_AXIS);
+        JPanel buttonPane = new JPanel();
+        BoxLayout buttPaneBoxLayout = new BoxLayout(buttonPane, BoxLayout.X_AXIS);
+        buttonPane.setLayout(buttPaneBoxLayout);
 
         JButton complementaryButton = new JButton("complementary");
         JButton reverseComplementaryButton = new JButton("<html><center>reverse<br>complementary</html>");
@@ -97,15 +94,15 @@ public class ImportSuccessDialog extends JDialog {
         Font currentRevFont = complementaryButton.getFont();
         reverseComplementaryButton.setFont(new Font(complementaryButton.getName(), currentRevFont.BOLD, 12));
 
-        ButtonPane.add(Box.createHorizontalGlue());
-        ButtonPane.add(complementaryButton);
-        ButtonPane.add(Box.createHorizontalStrut(80));
-        ButtonPane.add(reverseComplementaryButton);
-        ButtonPane.add(Box.createHorizontalGlue());
+        buttonPane.add(Box.createHorizontalGlue());
+        buttonPane.add(complementaryButton);
+        buttonPane.add(Box.createHorizontalStrut(80));
+        buttonPane.add(reverseComplementaryButton);
+        buttonPane.add(Box.createHorizontalGlue());
 
-        ButtonPane.setMaximumSize(ButtonPane.getPreferredSize());
+        buttonPane.setMaximumSize(buttonPane.getPreferredSize());
 
-        return ButtonPane;
+        return buttonPane;
     }
 
 
