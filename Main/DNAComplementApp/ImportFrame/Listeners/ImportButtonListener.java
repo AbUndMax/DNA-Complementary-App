@@ -1,11 +1,11 @@
-package DNAComplementApp.DNAListeners;
+package DNAComplementApp.ImportFrame.Listeners;
 
-import DNAComplementApp.DNAHandlers.ImportHandler;
+import DNAComplementApp.ImportFrame.Handlers.ImportHandler;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainFrameButtonListener implements ActionListener {
+public class ImportButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {

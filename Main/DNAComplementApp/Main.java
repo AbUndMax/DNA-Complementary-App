@@ -1,14 +1,14 @@
 package DNAComplementApp;
 
-import DNAComplementApp.DNAWindows.DNAMainFrame;
-import DNAComplementApp.DNAWindows.ImportSuccessDialog;
-import DNAComplementApp.DNAWindows.ResultFrame;
+import DNAComplementApp.ImportFrame.ImportFrame;
+import DNAComplementApp.ImportSuccessDialog.ImportSuccessDialog;
+import DNAComplementApp.ResultFrame.ResultFrame;
 
 // The Main Class is used to get access on the specific Frame instances without mixing them up in the other classes!
 
-public class DNAMain {
+public class Main {
 
-    public static DNAMainFrame mainFrame;
+    public static ImportFrame mainFrame;
     public static ImportSuccessDialog importDialog;
     public static ResultFrame resultFrame;
 
@@ -17,7 +17,7 @@ public class DNAMain {
     }
 
     public static void newMainFrame() {
-        DNAMainFrame mf = new DNAMainFrame();
+        ImportFrame mf = new ImportFrame();
         mainFrame = mf;
         mf.setVisible(true);
     }

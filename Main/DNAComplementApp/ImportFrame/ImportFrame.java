@@ -1,15 +1,15 @@
-package DNAComplementApp.DNAWindows;
+package DNAComplementApp.ImportFrame;
 
-import DNAComplementApp.DNAListeners.MainFrameButtonListener;
-import DNAComplementApp.DNAListeners.RadioListener;
+import DNAComplementApp.ImportFrame.Listeners.ImportButtonListener;
+import DNAComplementApp.ImportFrame.Listeners.SeqTypeRadioListener;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class DNAMainFrame extends JFrame {
+public class ImportFrame extends JFrame {
 
-    private MainFrameButtonListener buttonListener = new MainFrameButtonListener();
-    private RadioListener radioListener = new RadioListener();
+    private static final ImportButtonListener buttonListener = new ImportButtonListener();
+    private static final SeqTypeRadioListener radioListener = new SeqTypeRadioListener();
 
     private BoxLayout boxLayout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS);
 
@@ -17,7 +17,7 @@ public class DNAMainFrame extends JFrame {
     public static final JRadioButton rna = new JRadioButton("RNA");
 
 
-    public DNAMainFrame() {
+    public ImportFrame() {
         setTitle("DNA-Complement-Generator");
         setLayout(boxLayout);
         setSize(500, 300);
@@ -25,31 +25,15 @@ public class DNAMainFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-
         add(Box.createVerticalGlue());
-
         add(drawImportButton());
-
         add(Box.createVerticalStrut(10));
-
         add(drawRadioButton());
-
         add(Box.createVerticalGlue());
 
     }
 
-    private JButton createButton(String name){
-        JButton button = new JButton();
-        Font currentFont = button.getFont();
-        Font newFont = new Font(currentFont.getName(), currentFont.BOLD, 20);
-        button.setText(name);
-        button.setActionCommand(name);
-        button.addActionListener(buttonListener);
-        button.setFont(newFont);
-
-        return button;
-    }
-
+    // Main Button! -> This will open the FileChooser and let the user import a FASTA file for Nucleotides.
     private JButton drawImportButton() {
         // create an import button which allows to import a FASTA-File
         JButton button = new JButton("Import FASTA-File");
@@ -59,10 +43,12 @@ public class DNAMainFrame extends JFrame {
         button.setPreferredSize(new Dimension(120, 40));
         Font currentFont = button.getFont();
         button.setFont(new Font(currentFont.getName(), currentFont.BOLD, 15));
+        button.setToolTipText("only for nucleotide sequences!!!");
 
         return button;
     }
 
+    // radioButtons for choosing rather to use DNA or RNA sequences!
     private JPanel drawRadioButton(){
         JPanel RadioPane = new JPanel();
         BoxLayout RadioBoxLayout = new BoxLayout(RadioPane, BoxLayout.X_AXIS);

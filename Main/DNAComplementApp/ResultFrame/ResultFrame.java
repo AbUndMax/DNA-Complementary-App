@@ -1,27 +1,25 @@
-package DNAComplementApp.DNAWindows;
+package DNAComplementApp.ResultFrame;
 
-import DNAComplementApp.DNAListeners.ResultComboBoxListener;
-import DNAComplementApp.DNAListeners.ResultFrameButtonListener;
+import DNAComplementApp.ResultFrame.Listeners.ResultSeqChooserCBListener;
+import DNAComplementApp.ResultFrame.Listeners.ResultFrameButtonListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-import static DNAComplementApp.DNAListeners.ImportComboBoxListener.selectedItems;
-import static DNAComplementApp.DNAListeners.ImportDialogButtonListener.isReverse;
-import static DNAComplementApp.DNAObjects.DNASequences.allSequences;
+import static DNAComplementApp.ImportFrame.Listeners.ImportSeqChooserCBoxListener.selectedSequences;
+import static DNAComplementApp.ObjectClasses.DNASequences.allSequences;
 
 public class ResultFrame extends JFrame {
 
-    private static ResultFrameButtonListener buttonListener = new ResultFrameButtonListener();
+    private static final ResultFrameButtonListener buttonListener = new ResultFrameButtonListener();
+    private static final ResultSeqChooserCBListener comboBoxListener = new ResultSeqChooserCBListener();
 
-    private static ResultComboBoxListener comboBoxListener = new ResultComboBoxListener();
+    public static JComboBox resultSequenceChooserCB = new JComboBox();
 
-    public static JComboBox comboBox = new JComboBox();
-
-    public static final JTextArea textArea = new JTextArea();
-    private static final JScrollPane scrollPane = new JScrollPane();
+    public static JTextArea textArea = new JTextArea();
     private BoxLayout boxLayout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS );
+
     public ResultFrame() {
         setTitle("DNA-Complement-Generator");
         setLayout(boxLayout);
@@ -30,29 +28,24 @@ public class ResultFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        add(Box.createVerticalStrut(15));
-
+        add(Box.createVerticalStrut(0));
         add(drawComboBox());
-
         add(Box.createVerticalStrut(0));
-
         add(drawTextArea());
-
         add(Box.createVerticalStrut(0));
-
         add(drawButtonPane());
-
         add(Box.createVerticalGlue());
 
     }
 
+    // Choose which Sequence should be shown
     private static JPanel drawComboBox() {
         JPanel combBoxPane = new JPanel();
         BoxLayout boxLayout = new BoxLayout(combBoxPane, BoxLayout.X_AXIS);
         combBoxPane.setLayout(boxLayout);
-        combBoxPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+        combBoxPane.setBorder(BorderFactory.createEmptyBorder(15, 10, 10, 10));
 
-        comboBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+        resultSequenceChooserCB.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JButton newImport = new JButton("new Import");
         newImport.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -60,35 +53,32 @@ public class ResultFrame extends JFrame {
         newImport.setActionCommand("new import");
         newImport.addActionListener(buttonListener);
 
-        for (String name : selectedItems) {
-            comboBox.addItem(name);
+        for (String name : selectedSequences) {
+            resultSequenceChooserCB.addItem(name);
         }
 
-        Dimension preferredComboBoxDimension = new Dimension(400, comboBox.getPreferredSize().height);
-        comboBox.setPreferredSize(preferredComboBoxDimension);
-        Dimension minimumComboBoxDimension = new Dimension(100, comboBox.getPreferredSize().height);
-        comboBox.setMinimumSize(minimumComboBoxDimension);
-        comboBox.addActionListener(comboBoxListener);
+        Dimension preferredComboBoxDimension = new Dimension(400, resultSequenceChooserCB.getPreferredSize().height);
+        resultSequenceChooserCB.setPreferredSize(preferredComboBoxDimension);
+        Dimension minimumComboBoxDimension = new Dimension(100, resultSequenceChooserCB.getPreferredSize().height);
+        resultSequenceChooserCB.setMinimumSize(minimumComboBoxDimension);
+        resultSequenceChooserCB.addActionListener(comboBoxListener);
 
-        combBoxPane.add(comboBox);
+        combBoxPane.add(resultSequenceChooserCB);
         combBoxPane.add(newImport);
 
         return combBoxPane;
     }
 
+    // actual Area which shows the complement
     private static JPanel drawTextArea() {
         JPanel textPanel = new JPanel();
         JScrollPane scrollPane = new JScrollPane();
 
         textArea.setLineWrap(true);
         textArea.setEditable(false);
-        //load default
 
-        if (isReverse) {
-            textArea.setText(allSequences.get(selectedItems[0]).getReverseComplement());
-        } else {
-            textArea.setText(allSequences.get(selectedItems[0]).getComplement());
-        }
+        // load default (which is the first element in the picked sequences)
+        textArea.setText(allSequences.get(selectedSequences[0]).getComplement());
 
         scrollPane.setViewportView(textArea);
 
@@ -99,6 +89,7 @@ public class ResultFrame extends JFrame {
         return textPanel;
     }
 
+    // buttons for easy copy or even saving all Complements to new FASTA file
     private static JPanel drawButtonPane() {
         JPanel buttonPane = new JPanel();
         JButton copyButton = new JButton("copy");

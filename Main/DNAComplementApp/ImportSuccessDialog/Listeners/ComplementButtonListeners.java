@@ -1,20 +1,14 @@
-package DNAComplementApp.DNAListeners;
+package DNAComplementApp.ImportSuccessDialog.Listeners;
 
-import DNAComplementApp.DNAHandlers.ComplementHandler;
-import DNAComplementApp.DNAMain;
+import DNAComplementApp.ImportSuccessDialog.Handlers.ComplementHandler;
+import DNAComplementApp.Main;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ImportDialogButtonListener implements ActionListener {
+public class ComplementButtonListeners implements ActionListener {
 
-    private JDialog importDialog;
     public static Boolean isReverse = false;
-
-    public ImportDialogButtonListener(JDialog importDialog) {
-        this.importDialog = importDialog;
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -32,9 +26,9 @@ public class ImportDialogButtonListener implements ActionListener {
                 break;
         }
 
-        DNAMain.newResultFrame();
+        Main.newResultFrame();
 
-        importDialog.dispose();
-        DNAMain.mainFrame.dispose();
+        Main.importDialog.dispose();
+        Main.mainFrame.dispose();
     }
 }
