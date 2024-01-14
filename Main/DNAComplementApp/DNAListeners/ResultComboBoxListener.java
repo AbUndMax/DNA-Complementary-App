@@ -15,7 +15,7 @@ public class ResultComboBoxListener implements ActionListener {
         String selectedItem = (String) comboBox.getSelectedItem();
 
         if (isReverse) {
-            //TextArea aktualisieren mit jeweiliger Seuqunce
+            //TextArea aktualisieren mit jeweiliger Sequence
             textArea.setText(allSequences.get(selectedItem).getReverseComplement());
         } else {
             textArea.setText(allSequences.get(selectedItem).getComplement());

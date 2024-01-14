@@ -2,8 +2,6 @@ package DNAComplementApp.DNAListeners;
 
 import DNAComplementApp.DNAHandlers.ComplementHandler;
 import DNAComplementApp.DNAMain;
-import DNAComplementApp.DNAWindows.DNAMainFrame;
-import DNAComplementApp.DNAWindows.ResultFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,7 +10,7 @@ import java.awt.event.ActionListener;
 public class ImportDialogButtonListener implements ActionListener {
 
     private JDialog importDialog;
-    public static Boolean isReverse;
+    public static Boolean isReverse = false;
 
     public ImportDialogButtonListener(JDialog importDialog) {
         this.importDialog = importDialog;
@@ -28,7 +26,7 @@ public class ImportDialogButtonListener implements ActionListener {
                 ComplementHandler.getComplements();
                 break;
 
-            case "reveresComp":
+            case "reverseComp":
                 isReverse = true;
                 ComplementHandler.getComplements();
                 break;

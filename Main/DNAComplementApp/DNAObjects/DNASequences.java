@@ -60,4 +60,11 @@ public class DNASequences {
     public static String[] getAllSequenceNames() {
         return allSequences.keySet().toArray(new String[0]);
     }
+
+    public void cleanObject() {
+        header = null;
+        sequence = null;
+        complement = null;
+        reverseComplement = null;
+    }
 }

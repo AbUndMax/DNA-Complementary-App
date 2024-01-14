@@ -3,17 +3,20 @@ package DNAComplementApp.DNAHandlers;
 import DNAComplementApp.DNAObjects.DNASequences;
 
 import static DNAComplementApp.DNAListeners.ImportComboBoxListener.selectedItems;
+import static DNAComplementApp.DNAListeners.ImportDialogButtonListener.isReverse;
 import static DNAComplementApp.DNAListeners.RadioListener.isSequenceTypeDNA;
 import static DNAComplementApp.DNAListeners.RadioListener.isSequenceTypeRNA;
 import static DNAComplementApp.DNAObjects.DNASequences.allSequences;
-import static DNAComplementApp.DNAListeners.ImportDialogButtonListener.isReverse;
 
 public class ComplementHandler {
 
     // Achtung
-    private static final char[][] complementaryDNAArray = {{'A', 'T'}, {'C', 'G'}, {'R', 'Y'}, {'K', 'M'}, {'W', 'W'}, {'S', 'S'}, {'B', 'V'}, {'D', 'H'}, {'N', 'N'}, {'-', '-'}};
-    private static final char[][] complementaryRNAArray = {{'A', 'U'}, {'C', 'G'}, {'R', 'Y'}, {'K', 'M'}, {'W', 'W'}, {'S', 'S'}, {'B', 'V'}, {'D', 'H'}, {'N', 'N'}, {'-', '-'}};
-
+    private static final char[][] complementaryDNAArray = {{'A', 'T'}, {'T', 'A'}, {'C', 'G'}, {'G', 'C'},
+            {'R', 'Y'}, {'Y', 'R'}, {'K', 'M'}, {'M', 'K'}, {'W', 'W'}, {'S', 'S'}, {'B', 'V'}, {'V', 'B'},
+            {'D', 'H'}, {'H', 'D'}, {'N', 'N'}, {'-', '-'}};
+    private static final char[][] complementaryRNAArray = {{'A', 'U'}, {'U', 'A'}, {'C', 'G'}, {'G', 'C'},
+            {'R', 'Y'}, {'Y', 'R'}, {'K', 'M'}, {'M', 'K'}, {'W', 'W'}, {'S', 'S'}, {'B', 'V'}, {'V', 'B'},
+            {'D', 'H'}, {'H', 'D'}, {'N', 'N'}, {'-', '-'}};
     public static void getComplements() {
 
         for (String sequenceName : selectedItems) {
@@ -52,9 +55,6 @@ public class ComplementHandler {
             for (char[] nucleotidePair : nucleotideComplementArray) {
                 if (currentNucleotide == nucleotidePair[0]) {
                     complement.append(nucleotidePair[1]);
-                }
-                else if (currentNucleotide == nucleotidePair[1]) {
-                    complement.append(nucleotidePair[0]);
                 }
             }
         }

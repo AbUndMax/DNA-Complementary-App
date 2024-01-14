@@ -6,12 +6,10 @@ import DNAComplementApp.DNAListeners.ResultFrameButtonListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.util.Arrays;
 
 import static DNAComplementApp.DNAListeners.ImportComboBoxListener.selectedItems;
 import static DNAComplementApp.DNAListeners.ImportDialogButtonListener.isReverse;
 import static DNAComplementApp.DNAObjects.DNASequences.allSequences;
-import static DNAComplementApp.DNAObjects.DNASequences.getAllSequenceNames;
 
 public class ResultFrame extends JFrame {
 

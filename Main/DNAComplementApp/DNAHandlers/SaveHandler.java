@@ -9,7 +9,7 @@ import static DNAComplementApp.DNAListeners.ImportComboBoxListener.selectedItems
 import static DNAComplementApp.DNAListeners.ImportDialogButtonListener.isReverse;
 import static DNAComplementApp.DNAObjects.DNASequences.allSequences;
 
-public class SavedHandler {
+public class SaveHandler {
 
     public static void handleSave() {
 

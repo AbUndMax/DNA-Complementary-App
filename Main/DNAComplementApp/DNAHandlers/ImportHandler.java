@@ -1,14 +1,13 @@
 package DNAComplementApp.DNAHandlers;
 
 import DNAComplementApp.DNAMain;
-import DNAComplementApp.DNAWindows.DNAMainFrame;
-import DNAComplementApp.DNAWindows.ImportSuccessDialog;
 import DNAComplementApp.DNAObjects.DNASequences;
 
 import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.regex.Pattern;
 
 public class ImportHandler {
 
@@ -51,43 +50,39 @@ public class ImportHandler {
         try {
             // Creating a BufferedReader to read the file
             BufferedReader bufferedIN = new BufferedReader(new FileReader(selectedFile.getAbsolutePath()));
-            String line;
+            String line = bufferedIN.readLine();
+            DNASequences newSequence = null;
 
             // takes the first line (the Header) & loop through BufferedReader lines as long as the end is not reached
-            while ((line = bufferedIN.readLine()) != null) {
+            while (line != null) {
 
-                // check if it is a valid FASTA header
-                if (line.charAt(0) != '>') {
+                StringBuilder sequence = new StringBuilder();
+
+                System.out.println(line.charAt(0));
+
+                if (line.charAt(0) == '>') {
+                    // if Header is found, set new Sequence Instance and place Header as Sequence name
+                    System.out.println("Header found");
+                    newSequence = new DNASequences(line.substring(1));
+                    line = bufferedIN.readLine();
+                }
+                else if (line.charAt(0) == ';' | line.isEmpty()) {
+                    line = bufferedIN.readLine();
+                }
+                else if (line.matches("^[ATCGURYKMSWBDHVN-]*$")){
+                    // append the Sequence to one full String
+                    System.out.println("line Matches Nukleotide");
+                    do {
+                            System.out.println("new line" + line);
+                            sequence.append(line);
+                    } while ((line = bufferedIN.readLine()) != null && line.toUpperCase().matches("^[ATCGURYKMSWBDHVN-]*$"));
+                    // set finished String as Sequence attribute
+                    newSequence.setSequence(sequence.toString());
+                    System.out.println("Sequence appended");
+                }
+                else {
                     throw new FileFormatError();
                 }
-
-                // initialize new sequence object with just its header.
-                DNASequences newSequence = new DNASequences(line.substring(1));
-
-                // get the next line (aka the first line of the sequence)
-                StringBuilder sequence = new StringBuilder();
-                line = bufferedIN.readLine();
-                while (!line.isEmpty()) {
-
-                    //check if the line is a valid FASTA sequence
-                    if (!line.matches("^[ATCGURYKMSWBDHVN-]*$")) {
-                        throw new FileFormatError();
-                    }
-
-                    //append the line to the beforehand sequencelines
-                    sequence.append(line);
-
-                    // this part is to prevent a nullPointException for .isEmpty if line would be null i.e. the last
-                    // line is reached. -> if line is null, break while loop
-                    if ((line = bufferedIN.readLine()) == null) {
-                        break;
-                    }
-                    // if the line would be empty, (aka a new Header is expected) jump back to outer while loop
-                    // the outer loop grabs the next line, which is a new header and start all over.
-                }
-
-                // give the before initialized sequence its actual sequence.
-                newSequence.setSequence(sequence.toString());
             }
 
             try {

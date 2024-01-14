@@ -4,7 +4,7 @@ import DNAComplementApp.DNAWindows.DNAMainFrame;
 import DNAComplementApp.DNAWindows.ImportSuccessDialog;
 import DNAComplementApp.DNAWindows.ResultFrame;
 
-import javax.swing.*;
+// The Main Class is used to get access on the specific Frame instances without mixing them up in the other classes!
 
 public class DNAMain {
 
