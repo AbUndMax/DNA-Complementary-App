@@ -1,14 +1,14 @@
-package DNAWindows;
+package DNAComplementApp.DNAWindows;
 
-import DNAListeners.MainFrameButtonListener;
-import DNAListeners.RadioListener;
+import DNAComplementApp.DNAListeners.MainFrameButtonListener;
+import DNAComplementApp.DNAListeners.RadioListener;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class DNAMainFrame extends JFrame {
 
-    private MainFrameButtonListener buttonListener = new MainFrameButtonListener(this);
+    private MainFrameButtonListener buttonListener = new MainFrameButtonListener();
     private RadioListener radioListener = new RadioListener();
 
     private BoxLayout boxLayout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS);

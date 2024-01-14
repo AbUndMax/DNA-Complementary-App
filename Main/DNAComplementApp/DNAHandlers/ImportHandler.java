@@ -1,8 +1,9 @@
-package DNAHandlers;
+package DNAComplementApp.DNAHandlers;
 
-import DNAWindows.DNAMainFrame;
-import DNAWindows.ImportSuccessDialog;
-import DNAObjects.DNASequences;
+import DNAComplementApp.DNAMain;
+import DNAComplementApp.DNAWindows.DNAMainFrame;
+import DNAComplementApp.DNAWindows.ImportSuccessDialog;
+import DNAComplementApp.DNAObjects.DNASequences;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -12,20 +13,21 @@ import java.io.FileReader;
 public class ImportHandler {
 
     // opens JFileChooser, checks File for FASTA format and loads the file into the System.
-    public static void handleImport(DNAMainFrame frame) {
+    public static void handleImport() {
 
         JFileChooser chooser = new JFileChooser();
         Boolean isFileSelected = false;
-        File selectedFile = null;
+        File selectedFile;
 
         do {
             try {
                 chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                int result = chooser.showOpenDialog(frame);
+                int result = chooser.showOpenDialog(DNAMain.mainFrame);
 
                 if (result == JFileChooser.APPROVE_OPTION) {
                     selectedFile = chooser.getSelectedFile();
-                    // check File if Format is correct -> else throw error
+
+                    // check File if Format is correct & Load it into the system-> else throw error
                     validateAndLoadFile(selectedFile);
                     isFileSelected = true;
 
@@ -34,14 +36,13 @@ public class ImportHandler {
                 }
             } catch (Exception xptn) {
                 isFileSelected = false;
-                JOptionPane.showMessageDialog(frame, "Error: " + xptn.getMessage());
+                JOptionPane.showMessageDialog(DNAMain.mainFrame, "Error: " + xptn.getMessage());
             }
         } while (!isFileSelected);
 
 
-
-        ImportSuccessDialog df = new ImportSuccessDialog(frame);
-        df.setVisible(true);
+        // If import is successful, open the success Dialog
+        DNAMain.newImportDialog();
     }
 
     // Reads the file, checks if format is valid while reading and if so, the sequence gets loaded iinto the system
@@ -94,10 +95,6 @@ public class ImportHandler {
             } catch (Exception xptn){
                 System.out.println(xptn.getMessage());
             }
-
-            // TODO: remove Debug line
-            for (String key : DNASequences.allSequences.keySet())
-                System.out.println(key);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

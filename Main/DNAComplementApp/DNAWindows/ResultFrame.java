@@ -1,13 +1,17 @@
-package DNAWindows;
+package DNAComplementApp.DNAWindows;
 
-import DNAListeners.ResultComboBoxListener;
-import DNAListeners.ResultFrameButtonListener;
+import DNAComplementApp.DNAListeners.ResultComboBoxListener;
+import DNAComplementApp.DNAListeners.ResultFrameButtonListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.Arrays;
 
-import static DNAObjects.DNASequences.getAllSequenceNames;
+import static DNAComplementApp.DNAListeners.ImportComboBoxListener.selectedItems;
+import static DNAComplementApp.DNAListeners.ImportDialogButtonListener.isReverse;
+import static DNAComplementApp.DNAObjects.DNASequences.allSequences;
+import static DNAComplementApp.DNAObjects.DNASequences.getAllSequenceNames;
 
 public class ResultFrame extends JFrame {
 
@@ -15,7 +19,9 @@ public class ResultFrame extends JFrame {
 
     private static ResultComboBoxListener comboBoxListener = new ResultComboBoxListener();
 
-    private static final JTextArea textArea = new JTextArea();
+    public static JComboBox comboBox = new JComboBox();
+
+    public static final JTextArea textArea = new JTextArea();
     private static final JScrollPane scrollPane = new JScrollPane();
     private BoxLayout boxLayout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS );
     public ResultFrame() {
@@ -30,7 +36,7 @@ public class ResultFrame extends JFrame {
 
         add(drawComboBox());
 
-        add(Box.createVerticalStrut(10));
+        add(Box.createVerticalStrut(0));
 
         add(drawTextArea());
 
@@ -42,19 +48,34 @@ public class ResultFrame extends JFrame {
 
     }
 
-    private static JComboBox drawComboBox() {
-        JComboBox comboBox = new JComboBox();
-        for (String name : getAllSequenceNames()) {
+    private static JPanel drawComboBox() {
+        JPanel combBoxPane = new JPanel();
+        BoxLayout boxLayout = new BoxLayout(combBoxPane, BoxLayout.X_AXIS);
+        combBoxPane.setLayout(boxLayout);
+        combBoxPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+
+        comboBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JButton newImport = new JButton("new Import");
+        newImport.setAlignmentX(Component.RIGHT_ALIGNMENT);
+
+        newImport.setActionCommand("new import");
+        newImport.addActionListener(buttonListener);
+
+        for (String name : selectedItems) {
             comboBox.addItem(name);
         }
 
-        Dimension maxComboBoxDimension = comboBox.getMaximumSize();
-        maxComboBoxDimension.height = comboBox.getPreferredSize().height;
-        maxComboBoxDimension.width = 500;
-        comboBox.setMaximumSize(maxComboBoxDimension);
+        Dimension preferredComboBoxDimension = new Dimension(400, comboBox.getPreferredSize().height);
+        comboBox.setPreferredSize(preferredComboBoxDimension);
+        Dimension minimumComboBoxDimension = new Dimension(100, comboBox.getPreferredSize().height);
+        comboBox.setMinimumSize(minimumComboBoxDimension);
         comboBox.addActionListener(comboBoxListener);
 
-        return comboBox;
+        combBoxPane.add(comboBox);
+        combBoxPane.add(newImport);
+
+        return combBoxPane;
     }
 
     private static JPanel drawTextArea() {
@@ -62,6 +83,14 @@ public class ResultFrame extends JFrame {
         JScrollPane scrollPane = new JScrollPane();
 
         textArea.setLineWrap(true);
+        textArea.setEditable(false);
+        //load default
+
+        if (isReverse) {
+            textArea.setText(allSequences.get(selectedItems[0]).getReverseComplement());
+        } else {
+            textArea.setText(allSequences.get(selectedItems[0]).getComplement());
+        }
 
         scrollPane.setViewportView(textArea);
 

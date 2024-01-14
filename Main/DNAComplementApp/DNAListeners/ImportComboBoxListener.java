@@ -1,14 +1,15 @@
-package DNAListeners;
+package DNAComplementApp.DNAListeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
-import static DNAObjects.DNASequences.allSequences;
-import static DNAWindows.ImportSuccessDialog.comboBox;
+import static DNAComplementApp.DNAObjects.DNASequences.getAllSequenceNames;
+import static DNAComplementApp.DNAWindows.ImportSuccessDialog.comboBox;
 
 public class ImportComboBoxListener implements ActionListener {
 
-    public static String[] selectedItems = allSequences.keySet().toArray(new String[0]);
+    public static String[] selectedItems;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -16,7 +17,7 @@ public class ImportComboBoxListener implements ActionListener {
 
         switch(selectedItem) {
             case "All":
-                selectedItems = allSequences.keySet().toArray(new String[0]);
+                selectedItems = getAllSequenceNames();
                 break;
 
             default:

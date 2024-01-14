@@ -1,11 +1,12 @@
-package DNAHandlers;
+package DNAComplementApp.DNAHandlers;
 
-import DNAObjects.DNASequences;
+import DNAComplementApp.DNAObjects.DNASequences;
 
-import static DNAListeners.ImportComboBoxListener.selectedItems;
-import static DNAListeners.RadioListener.isSequenceTypeDNA;
-import static DNAListeners.RadioListener.isSequenceTypeRNA;
-import static DNAObjects.DNASequences.allSequences;
+import static DNAComplementApp.DNAListeners.ImportComboBoxListener.selectedItems;
+import static DNAComplementApp.DNAListeners.RadioListener.isSequenceTypeDNA;
+import static DNAComplementApp.DNAListeners.RadioListener.isSequenceTypeRNA;
+import static DNAComplementApp.DNAObjects.DNASequences.allSequences;
+import static DNAComplementApp.DNAListeners.ImportDialogButtonListener.isReverse;
 
 public class ComplementHandler {
 
@@ -13,7 +14,7 @@ public class ComplementHandler {
     private static final char[][] complementaryDNAArray = {{'A', 'T'}, {'C', 'G'}, {'R', 'Y'}, {'K', 'M'}, {'W', 'W'}, {'S', 'S'}, {'B', 'V'}, {'D', 'H'}, {'N', 'N'}, {'-', '-'}};
     private static final char[][] complementaryRNAArray = {{'A', 'U'}, {'C', 'G'}, {'R', 'Y'}, {'K', 'M'}, {'W', 'W'}, {'S', 'S'}, {'B', 'V'}, {'D', 'H'}, {'N', 'N'}, {'-', '-'}};
 
-    public static void getComplements(Boolean isReverse) {
+    public static void getComplements() {
 
         for (String sequenceName : selectedItems) {
             DNASequences currentSequence = allSequences.get(sequenceName);

@@ -1,16 +1,18 @@
-package DNAWindows;
+package DNAComplementApp.DNAWindows;
 
-import DNAListeners.ImportComboBoxListener;
-import DNAListeners.ImportDialogButtonListener;
+import DNAComplementApp.DNAListeners.ImportComboBoxListener;
+import DNAComplementApp.DNAListeners.ImportDialogButtonListener;
+import DNAComplementApp.DNAMain;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static DNAObjects.DNASequences.getAllSequenceNames;
+import static DNAComplementApp.DNAListeners.ImportComboBoxListener.selectedItems;
+import static DNAComplementApp.DNAObjects.DNASequences.getAllSequenceNames;
 
 public class ImportSuccessDialog extends JDialog {
 
-    private ImportDialogButtonListener buttonListener = new ImportDialogButtonListener();
+    private ImportDialogButtonListener buttonListener = new ImportDialogButtonListener(this);
     private ImportComboBoxListener comboBoxListener = new ImportComboBoxListener();
     public static JComboBox<String> comboBox = new JComboBox<>();
 
@@ -19,8 +21,8 @@ public class ImportSuccessDialog extends JDialog {
     private static final JLabel information = new JLabel();
 
 
-    public ImportSuccessDialog(Frame owner) {
-        super(owner, "Import success", true);
+    public ImportSuccessDialog() {
+        super(DNAMain.mainFrame, "Import success", true);
         setSize(new Dimension(450, 250));
         setResizable(false);
         setLocationRelativeTo(null);
@@ -54,6 +56,9 @@ public class ImportSuccessDialog extends JDialog {
         for (String name : getAllSequenceNames()) {
             comboBox.addItem(name);
         }
+
+        // set default select for the comboBox which is "All"
+        selectedItems = getAllSequenceNames();
 
         Dimension maxComboBoxDimension = comboBox.getMaximumSize();
         maxComboBoxDimension.height = comboBox.getPreferredSize().height;
