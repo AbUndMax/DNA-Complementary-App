@@ -1,6 +1,6 @@
 # DNA / RNA complement computation App with FASTA input
 
-(note that most of the functions have a hyperLink reffering to the implementation inside the Code!)
+(note that most of the functions have a hyperLink referring to the implementation inside the Code!)
 
 ## App principle
 This App takes a FASTA file as its input and will generate the complement or 
@@ -35,12 +35,12 @@ The Loading is achieved inside [`ImportFrame.Handlers.ImportHandler.validateAndL
 ### 2) Complementary or reverse-complementary?
 If the import was a success, a [Dialog](https://github.com/AbUndMax/DNA-Complementary-App/blob/a44164e1782119c641f518ea78161300baf105e3/Main/DNAComplementApp/ImportSuccessDialog/ImportSuccessDialog.java) 
 pops up, informing the user on the successful import. Furthermore, the Dialog shows two buttons which allows the user
-to decide rather to get the complement or the reverse-complement of the choosen Sequence.
+to decide rather to get the complement or the reverse-complement of the chosen Sequence.
 In the middle, a ComboBox is placed. All Sequences that where detected in the import phase will be displayed here.
 two option are possible:
 
  - 1) "All" - which will then get the (reverse-) complement of all sequences in the file.
- - 2) a single sequence (choosen by clicking on the corresponding name)
+ - 2) a single sequence (chosen by clicking on the corresponding name)
 
 the selection is stored inside an String-Array [`selectedSequences`](https://github.com/AbUndMax/DNA-Complementary-App/blob/a44164e1782119c641f518ea78161300baf105e3/Main/DNAComplementApp/ImportSuccessDialog/Listeners/ImportSeqChooserCBoxListener.java#L11).
 This Array is used in multiple scenarios for getting the selectedSequences, loop over them and perform operations on
@@ -78,9 +78,9 @@ via two while Loops. The first outer Loop will check for three conditions:
     These are simply skipped and the next line is called. The outer Loops traverses once more.
 - 3) A line of valid Sequence letters ```"^[ATCGURYKMSWBDHVN-]*$"```:  
     This initialize a inner do-while Loop which loops
-    over every next line that is part of the current sequenc (i.e. until a line is found that won't match any sequence
+    over every next line that is part of the current sequence (i.e. until a line is found that won't match any sequence
     letters)
-- elsewise a FileFormat Error is thrown since if none of the above conditions are fulfilled, the file is not one of a
+- else wise a FileFormat Error is thrown since if none of the above conditions are fulfilled, the file is not one of a
   FASTA format!
 
 
@@ -97,11 +97,11 @@ These Arrays are Matrices with 2 columns. The first column is the current nucleo
 
 The generateComplementary function gets a String which is the sequence we want the (reverse-)complement of and a Boolean
 value which determines rather we want the reverse or normal complement.
-Furthermore, it works with two loops, the second beeing nested inside the first:  
+Furthermore, it works with two loops, the second being nested inside the first:  
 - The outer for-loop traverses over the input sequence letter by letter.
-- The inner for-loop traverses over the complementArray (depending on which sequence Type was choosen by the radioButtons)  
+- The inner for-loop traverses over the complementArray (depending on which sequence Type was chosen by the radioButtons)  
     If the sequence-letter matches one of the first letter of the char-Array the second letter of the char-Array will 
-    be apended to the complement-sequence (a StringBuilder is used for easy appending and saving on memory yb not having
+    be appended to the complement-sequence (a StringBuilder is used for easy appending and saving on memory yb not having
     to generate a new String each loop).
 
 In the end, the Boolean value decides on rather the .reverse is called on the StringBuilder or not and therefore returning
