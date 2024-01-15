@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static DNAComplementApp.ImportFrame.Listeners.ImportSeqChooserCBoxListener.selectedSequences;
+import static DNAComplementApp.ImportSuccessDialog.Listeners.ImportSeqChooserCBoxListener.selectedSequences;
 import static DNAComplementApp.ImportSuccessDialog.Listeners.ComplementButtonListeners.isReverse;
 import static DNAComplementApp.ObjectClasses.DNASequences.allSequences;
 

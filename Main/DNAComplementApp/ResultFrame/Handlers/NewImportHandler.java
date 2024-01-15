@@ -3,7 +3,7 @@ package DNAComplementApp.ResultFrame.Handlers;
 import DNAComplementApp.Main;
 import DNAComplementApp.ObjectClasses.DNASequences;
 
-import static DNAComplementApp.ImportFrame.Listeners.ImportSeqChooserCBoxListener.selectedSequences;
+import static DNAComplementApp.ImportSuccessDialog.Listeners.ImportSeqChooserCBoxListener.selectedSequences;
 import static DNAComplementApp.ObjectClasses.DNASequences.allSequences;
 import static DNAComplementApp.ObjectClasses.DNASequences.getAllSequenceNames;
 import static DNAComplementApp.ResultFrame.ResultFrame.resultSequenceChooserCB;

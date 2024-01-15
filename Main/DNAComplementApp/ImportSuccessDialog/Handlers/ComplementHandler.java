@@ -2,7 +2,7 @@ package DNAComplementApp.ImportSuccessDialog.Handlers;
 
 import DNAComplementApp.ObjectClasses.DNASequences;
 
-import static DNAComplementApp.ImportFrame.Listeners.ImportSeqChooserCBoxListener.selectedSequences;
+import static DNAComplementApp.ImportSuccessDialog.Listeners.ImportSeqChooserCBoxListener.selectedSequences;
 import static DNAComplementApp.ImportSuccessDialog.Listeners.ComplementButtonListeners.isReverse;
 import static DNAComplementApp.ImportFrame.Listeners.SeqTypeRadioListener.isSequenceTypeDNA;
 import static DNAComplementApp.ObjectClasses.DNASequences.allSequences;

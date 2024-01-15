@@ -1,4 +1,4 @@
-package DNAComplementApp.ImportFrame.Listeners;
+package DNAComplementApp.ImportSuccessDialog.Listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-import static DNAComplementApp.ImportFrame.Listeners.ImportSeqChooserCBoxListener.selectedSequences;
+import static DNAComplementApp.ImportSuccessDialog.Listeners.ImportSeqChooserCBoxListener.selectedSequences;
 import static DNAComplementApp.ObjectClasses.DNASequences.allSequences;
 
 public class ResultFrame extends JFrame {

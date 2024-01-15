@@ -1,13 +1,13 @@
 package DNAComplementApp.ImportSuccessDialog;
 
-import DNAComplementApp.ImportFrame.Listeners.ImportSeqChooserCBoxListener;
+import DNAComplementApp.ImportSuccessDialog.Listeners.ImportSeqChooserCBoxListener;
 import DNAComplementApp.ImportSuccessDialog.Listeners.ComplementButtonListeners;
 import DNAComplementApp.Main;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static DNAComplementApp.ImportFrame.Listeners.ImportSeqChooserCBoxListener.selectedSequences;
+import static DNAComplementApp.ImportSuccessDialog.Listeners.ImportSeqChooserCBoxListener.selectedSequences;
 import static DNAComplementApp.ObjectClasses.DNASequences.getAllSequenceNames;
 
 public class ImportSuccessDialog extends JDialog {
