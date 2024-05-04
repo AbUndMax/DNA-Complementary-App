@@ -45,13 +45,15 @@ public class SaveHandler {
                     int complementRest = complementLength % 80;
                     int complementEndWithoutRest = complementLength - complementRest;
                     int i = 0;
-                    do {
+
+                    while (true) {
                         if (i < complementEndWithoutRest) {
                             out.println(complement.substring(i, i += 80));
                         } else {
                             out.println(complement.substring(i, complementLength));
+                            break;
                         }
-                    } while (i < complementEndWithoutRest);
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
